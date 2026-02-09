@@ -30,7 +30,8 @@ export function ToolCard({ tool, index }: ToolCardProps) {
     <Link
       href={tool.href}
       className={cn(
-        "group relative flex flex-col gap-4 rounded-2xl border border-surface-800 bg-surface-900 p-6",
+        "group relative flex flex-col gap-4 rounded-2xl border border-gray-200 bg-white p-6",
+        "dark:border-surface-800 dark:bg-surface-900",
         "transition-all duration-200 hover:border-brand-500/50 hover:shadow-lg hover:shadow-brand-500/5",
         "animate-slide-up"
       )}
@@ -38,7 +39,7 @@ export function ToolCard({ tool, index }: ToolCardProps) {
     >
       <div
         className={cn(
-          "flex h-12 w-12 items-center justify-center rounded-xl bg-surface-800",
+          "flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 dark:bg-surface-800",
           tool.color
         )}
       >
@@ -46,13 +47,13 @@ export function ToolCard({ tool, index }: ToolCardProps) {
       </div>
 
       <div className="flex flex-1 flex-col gap-1.5">
-        <h3 className="text-lg font-semibold text-gray-100">{tool.name}</h3>
-        <p className="text-sm leading-relaxed text-gray-400">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{tool.name}</h3>
+        <p className="text-sm leading-relaxed text-gray-500 dark:text-gray-400">
           {tool.description}
         </p>
       </div>
 
-      <div className="flex items-center gap-1 text-sm font-medium text-brand-400 opacity-0 transition-opacity group-hover:opacity-100">
+      <div className="flex items-center gap-1 text-sm font-medium text-brand-500 opacity-0 transition-opacity group-hover:opacity-100 dark:text-brand-400">
         Open tool
         <ArrowRight size={14} />
       </div>

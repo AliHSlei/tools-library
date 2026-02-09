@@ -75,8 +75,8 @@ export default function PdfConverterPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-50">PDF Converter</h1>
-        <p className="mt-2 text-gray-400">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">PDF Converter</h1>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">
           Convert between PDF and Word documents
         </p>
       </div>
@@ -93,14 +93,14 @@ export default function PdfConverterPage() {
             "rounded-xl px-4 py-2 text-sm font-medium transition-colors",
             isPdf
               ? "bg-brand-500 text-white"
-              : "bg-surface-800 text-gray-400 hover:text-gray-200"
+              : "bg-gray-100 text-gray-500 hover:text-gray-700 dark:bg-surface-800 dark:text-gray-400 dark:hover:text-gray-200"
           )}
         >
           PDF to Word
         </button>
         <button
           onClick={switchMode}
-          className="rounded-xl p-2 text-gray-500 hover:bg-surface-800 hover:text-gray-300"
+          className="rounded-xl p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-surface-800 dark:hover:text-gray-300"
         >
           <ArrowRightLeft size={16} />
         </button>
@@ -114,7 +114,7 @@ export default function PdfConverterPage() {
             "rounded-xl px-4 py-2 text-sm font-medium transition-colors",
             !isPdf
               ? "bg-brand-500 text-white"
-              : "bg-surface-800 text-gray-400 hover:text-gray-200"
+              : "bg-gray-100 text-gray-500 hover:text-gray-700 dark:bg-surface-800 dark:text-gray-400 dark:hover:text-gray-200"
           )}
         >
           Word to PDF
@@ -149,7 +149,7 @@ export default function PdfConverterPage() {
       </div>
 
       {loading && (
-        <div className="flex items-center gap-3 text-sm text-gray-400">
+        <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-400">
           <LoadingSpinner size={20} />
           Converting your file...
         </div>

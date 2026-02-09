@@ -51,8 +51,8 @@ export default function UnitCalculatorPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-50">Unit Calculator</h1>
-        <p className="mt-2 text-gray-400">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">Unit Calculator</h1>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">
           Convert between units of measurement
         </p>
       </div>
@@ -67,7 +67,7 @@ export default function UnitCalculatorPage() {
               "rounded-xl px-3 py-1.5 text-sm font-medium transition-colors",
               category === cat
                 ? "bg-brand-500 text-white"
-                : "bg-surface-800 text-gray-400 hover:text-gray-200"
+                : "bg-gray-100 text-gray-500 hover:text-gray-700 dark:bg-surface-800 dark:text-gray-400 dark:hover:text-gray-200"
             )}
           >
             {cat}
@@ -95,7 +95,7 @@ export default function UnitCalculatorPage() {
 
           <button
             onClick={swap}
-            className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl text-gray-500 transition-colors hover:bg-surface-800 hover:text-gray-300 sm:mb-0"
+            className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-surface-800 dark:hover:text-gray-300 sm:mb-0"
           >
             <ArrowRightLeft size={18} />
           </button>
@@ -107,8 +107,8 @@ export default function UnitCalculatorPage() {
               value={toUnit}
               onChange={(e) => setToUnit(e.target.value)}
             />
-            <div className="flex h-10 items-center rounded-xl border border-surface-800 bg-surface-900 px-3">
-              <span className="text-sm text-gray-100">
+            <div className="flex h-10 items-center rounded-xl border border-gray-200 bg-white px-3 dark:border-surface-800 dark:bg-surface-900">
+              <span className="text-sm text-gray-900 dark:text-gray-100">
                 {result || "—"}
               </span>
             </div>

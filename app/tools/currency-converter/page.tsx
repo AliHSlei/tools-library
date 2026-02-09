@@ -86,11 +86,11 @@ export default function CurrencyConverterPage() {
     label: string;
   }) => (
     <div className="space-y-1.5">
-      <label className="text-sm font-medium text-gray-300">{label}</label>
+      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="h-10 w-full appearance-none rounded-xl border border-surface-800 bg-surface-900 px-3 text-sm text-gray-100 outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30"
+        className="h-10 w-full appearance-none rounded-xl border border-gray-200 bg-white px-3 text-sm text-gray-900 outline-none transition-colors focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30 dark:border-surface-800 dark:bg-surface-900 dark:text-gray-100"
       >
         {filteredCurrencies.map((c) => (
           <option key={c} value={c}>
@@ -104,8 +104,8 @@ export default function CurrencyConverterPage() {
   return (
     <div className="mx-auto max-w-2xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-50">Currency Converter</h1>
-        <p className="mt-2 text-gray-400">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">Currency Converter</h1>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">
           Real-time currency exchange rates and conversion
         </p>
       </div>
@@ -135,7 +135,7 @@ export default function CurrencyConverterPage() {
 
           <button
             onClick={swap}
-            className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl text-gray-500 transition-colors hover:bg-surface-800 hover:text-gray-300"
+            className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:hover:bg-surface-800 dark:hover:text-gray-300"
           >
             <ArrowRightLeft size={18} />
           </button>
@@ -146,11 +146,11 @@ export default function CurrencyConverterPage() {
               value={toCurrency}
               onChange={setToCurrency}
             />
-            <div className="flex h-10 items-center rounded-xl border border-surface-800 bg-surface-900 px-3">
+            <div className="flex h-10 items-center rounded-xl border border-gray-200 bg-white px-3 dark:border-surface-800 dark:bg-surface-900">
               {loading ? (
                 <LoadingSpinner size={16} />
               ) : (
-                <span className="text-sm text-gray-100">
+                <span className="text-sm text-gray-900 dark:text-gray-100">
                   {result || "—"}
                 </span>
               )}
@@ -173,7 +173,7 @@ export default function CurrencyConverterPage() {
           <button
             onClick={() => loadRates(fromCurrency)}
             className={cn(
-              "flex items-center gap-1 text-gray-500 transition-colors hover:text-gray-300",
+              "flex items-center gap-1 text-gray-500 transition-colors hover:text-gray-700 dark:hover:text-gray-300",
               loading && "animate-spin"
             )}
           >

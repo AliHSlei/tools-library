@@ -11,36 +11,35 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const apiUrl = process.env.LIBRETRANSLATE_URL || "https://libretranslate.com";
+    const sourceLang = source && source !== "auto" ? source : "autodetect";
+    const langpair = `${sourceLang}|${target}`;
 
-    const res = await fetch(`${apiUrl}/translate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        q: text,
-        source: source || "auto",
-        target,
-        format: "text",
-      }),
-    });
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${encodeURIComponent(langpair)}`;
+
+    const res = await fetch(url);
 
     if (!res.ok) {
-      const errBody = await res.text();
-      console.error("[TRANSLATE] API error:", errBody);
-      throw new Error(`LibreTranslate returned ${res.status}`);
+      throw new Error(`MyMemory API returned ${res.status}`);
     }
 
     const data = await res.json();
 
+    if (data.responseStatus !== 200 && data.responseStatus !== "200") {
+      throw new Error(
+        data.responseDetails || "Translation failed"
+      );
+    }
+
     return Response.json({
-      translatedText: data.translatedText,
-      detectedLanguage: data.detectedLanguage,
+      translatedText: data.responseData.translatedText,
+      detectedLanguage: data.responseData.match
+        ? { language: sourceLang, confidence: data.responseData.match }
+        : undefined,
     });
   } catch (error) {
     console.error("[TRANSLATE]", error);
-    return Response.json(
-      { error: "Failed to translate text" },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : "Failed to translate text";
+    return Response.json({ error: message }, { status: 500 });
   }
 }

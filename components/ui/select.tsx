@@ -16,7 +16,7 @@ export function Select({
   return (
     <div className="space-y-1.5">
       {label && (
-        <label htmlFor={id} className="text-sm font-medium text-gray-300">
+        <label htmlFor={id} className="text-sm font-medium text-gray-700 dark:text-gray-300">
           {label}
         </label>
       )}
@@ -24,7 +24,8 @@ export function Select({
         <select
           id={id}
           className={cn(
-            "h-10 w-full appearance-none rounded-xl border border-surface-800 bg-surface-900 px-3 pr-9 text-sm text-gray-100 outline-none transition-colors",
+            "h-10 w-full appearance-none rounded-xl border border-gray-200 bg-white px-3 pr-9 text-sm text-gray-900 outline-none transition-colors",
+            "dark:border-surface-800 dark:bg-surface-900 dark:text-gray-100",
             "focus:border-brand-500 focus:ring-1 focus:ring-brand-500/30",
             className
           )}
@@ -38,7 +39,7 @@ export function Select({
         </select>
         <ChevronDown
           size={16}
-          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+          className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
         />
       </div>
     </div>

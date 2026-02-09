@@ -1,44 +1,35 @@
-let languageCache: { data: unknown[]; timestamp: number } | null = null;
-const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+// MyMemory doesn't have a /languages endpoint, so we provide a curated static list
+const LANGUAGES = [
+  { code: "en", name: "English" },
+  { code: "es", name: "Spanish" },
+  { code: "fr", name: "French" },
+  { code: "de", name: "German" },
+  { code: "it", name: "Italian" },
+  { code: "pt", name: "Portuguese" },
+  { code: "ru", name: "Russian" },
+  { code: "zh-CN", name: "Chinese (Simplified)" },
+  { code: "ja", name: "Japanese" },
+  { code: "ko", name: "Korean" },
+  { code: "ar", name: "Arabic" },
+  { code: "hi", name: "Hindi" },
+  { code: "nl", name: "Dutch" },
+  { code: "sv", name: "Swedish" },
+  { code: "pl", name: "Polish" },
+  { code: "tr", name: "Turkish" },
+  { code: "da", name: "Danish" },
+  { code: "fi", name: "Finnish" },
+  { code: "el", name: "Greek" },
+  { code: "cs", name: "Czech" },
+  { code: "ro", name: "Romanian" },
+  { code: "hu", name: "Hungarian" },
+  { code: "uk", name: "Ukrainian" },
+  { code: "id", name: "Indonesian" },
+  { code: "th", name: "Thai" },
+  { code: "vi", name: "Vietnamese" },
+  { code: "he", name: "Hebrew" },
+  { code: "no", name: "Norwegian" },
+];
 
 export async function GET() {
-  try {
-    if (languageCache && Date.now() - languageCache.timestamp < CACHE_TTL) {
-      return Response.json(languageCache.data);
-    }
-
-    const apiUrl = process.env.LIBRETRANSLATE_URL || "https://libretranslate.com";
-    const res = await fetch(`${apiUrl}/languages`);
-
-    if (!res.ok) {
-      throw new Error(`LibreTranslate returned ${res.status}`);
-    }
-
-    const data = await res.json();
-    languageCache = { data, timestamp: Date.now() };
-
-    return Response.json(data);
-  } catch (error) {
-    console.error("[LANGUAGES]", error);
-
-    if (languageCache) {
-      return Response.json(languageCache.data);
-    }
-
-    // Fallback common languages if API fails
-    return Response.json([
-      { code: "en", name: "English" },
-      { code: "es", name: "Spanish" },
-      { code: "fr", name: "French" },
-      { code: "de", name: "German" },
-      { code: "it", name: "Italian" },
-      { code: "pt", name: "Portuguese" },
-      { code: "ru", name: "Russian" },
-      { code: "zh", name: "Chinese" },
-      { code: "ja", name: "Japanese" },
-      { code: "ko", name: "Korean" },
-      { code: "ar", name: "Arabic" },
-      { code: "hi", name: "Hindi" },
-    ]);
-  }
+  return Response.json(LANGUAGES);
 }

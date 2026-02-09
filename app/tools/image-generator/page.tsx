@@ -72,8 +72,8 @@ export default function ImageGeneratorPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-gray-50">Image Generator</h1>
-        <p className="mt-2 text-gray-400">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-50">Image Generator</h1>
+        <p className="mt-2 text-gray-500 dark:text-gray-400">
           Generate images from text prompts using AI
         </p>
       </div>
@@ -106,7 +106,7 @@ export default function ImageGeneratorPage() {
 
         <button
           onClick={() => setShowNegative(!showNegative)}
-          className="text-xs text-gray-500 transition-colors hover:text-gray-300"
+          className="text-xs text-gray-500 transition-colors hover:text-gray-700 dark:hover:text-gray-300"
         >
           {showNegative ? "Hide" : "Show"} negative prompt
         </button>
@@ -135,9 +135,9 @@ export default function ImageGeneratorPage() {
 
       {/* Loading State */}
       {loading && (
-        <div className="flex flex-col items-center gap-4 rounded-2xl border border-surface-800 bg-surface-900 p-12">
+        <div className="flex flex-col items-center gap-4 rounded-2xl border border-gray-200 bg-white p-12 dark:border-surface-800 dark:bg-surface-900">
           <LoadingSpinner size={40} />
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             Generating your image... This may take a moment.
           </p>
         </div>
@@ -146,7 +146,7 @@ export default function ImageGeneratorPage() {
       {/* Result */}
       {imageUrl && !loading && (
         <div className="space-y-4">
-          <div className="overflow-hidden rounded-2xl border border-surface-800">
+          <div className="overflow-hidden rounded-2xl border border-gray-200 dark:border-surface-800">
             <img
               src={imageUrl}
               alt={prompt}
@@ -168,7 +168,7 @@ export default function ImageGeneratorPage() {
 
       {/* Empty State */}
       {!imageUrl && !loading && (
-        <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-surface-800 p-12 text-gray-600">
+        <div className="flex flex-col items-center gap-3 rounded-2xl border border-dashed border-gray-300 p-12 text-gray-400 dark:border-surface-800 dark:text-gray-600">
           <ImageIcon size={40} />
           <p className="text-sm">Your generated image will appear here</p>
         </div>

@@ -18,20 +18,20 @@ export function Breadcrumb() {
   });
 
   return (
-    <nav className="flex items-center gap-1.5 text-sm text-gray-400">
+    <nav className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-gray-400">
       <Link
         href="/"
-        className="flex items-center gap-1 transition-colors hover:text-gray-200"
+        className="flex items-center gap-1 transition-colors hover:text-gray-900 dark:hover:text-gray-200"
       >
         <Home size={14} />
         <span>Home</span>
       </Link>
       {crumbs.map((crumb) => (
         <span key={crumb.href} className="flex items-center gap-1.5">
-          <ChevronRight size={14} className="text-gray-600" />
+          <ChevronRight size={14} className="text-gray-300 dark:text-gray-600" />
           <Link
             href={crumb.href}
-            className="transition-colors hover:text-gray-200"
+            className="transition-colors hover:text-gray-900 dark:hover:text-gray-200"
           >
             {crumb.label}
           </Link>

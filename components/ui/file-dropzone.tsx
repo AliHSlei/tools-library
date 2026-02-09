@@ -73,19 +73,19 @@ export function FileDropzone({
           "flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed p-8 transition-colors",
           dragging
             ? "border-brand-400 bg-brand-500/5"
-            : "border-surface-800 hover:border-surface-700",
+            : "border-gray-300 hover:border-gray-400 dark:border-surface-800 dark:hover:border-surface-700",
           file && "border-brand-500/30 bg-brand-500/5"
         )}
       >
         <Upload
           size={32}
           className={cn(
-            "text-gray-500 transition-colors",
+            "text-gray-400 transition-colors dark:text-gray-500",
             dragging && "text-brand-400"
           )}
         />
         {file ? (
-          <div className="flex items-center gap-2 text-sm text-gray-300">
+          <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
             <span>
               {file.name} ({formatFileSize(file.size)})
             </span>
@@ -94,13 +94,13 @@ export function FileDropzone({
                 e.stopPropagation();
                 clear();
               }}
-              className="rounded-lg p-1 text-gray-500 hover:bg-surface-800 hover:text-gray-300"
+              className="rounded-lg p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 dark:text-gray-500 dark:hover:bg-surface-800 dark:hover:text-gray-300"
             >
               <X size={14} />
             </button>
           </div>
         ) : (
-          <p className="text-sm text-gray-500">{label}</p>
+          <p className="text-sm text-gray-400 dark:text-gray-500">{label}</p>
         )}
         <input
           ref={inputRef}
@@ -110,7 +110,7 @@ export function FileDropzone({
           className="hidden"
         />
       </div>
-      {error && <p className="text-xs text-red-400">{error}</p>}
+      {error && <p className="text-xs text-red-500 dark:text-red-400">{error}</p>}
     </div>
   );
 }
