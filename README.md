@@ -111,6 +111,3 @@ npx vercel
 
 > **Note:** The PDF Converter uses Puppeteer which downloads Chromium (~170 MB). For serverless deployments, swap `puppeteer` for `puppeteer-core` + `@sparticuz/chromium`.
 
-## License
-
-MIT
