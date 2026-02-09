@@ -1,7 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ["puppeteer", "pdf-parse", "pdfjs-dist"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.huggingface.co",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
